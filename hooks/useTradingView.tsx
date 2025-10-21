@@ -7,7 +7,6 @@ const useTradingView = (
 ) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   useEffect(() => {
-    // if (typeof window === undefined) return;
     if (!containerRef?.current) return;
     if (containerRef?.current.dataset.loaded) return;
     containerRef.current.innerHTML = `<div class="tradingview-widget-container__widget" style="width:100%; height:${height}px;"></div>`;
