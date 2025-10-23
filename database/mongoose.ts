@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI;
-console.log({MONGODB_URI})
+console.log({ MONGODB_URI });
 
 declare global {
   var mongooseCache: {
@@ -16,13 +16,15 @@ if (!cached) {
 }
 
 export const connectToDatabase = async () => {
-
   if (!MONGODB_URI) throw new Error("MongoDB connection url missing");
 
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, { bufferCommands: false, dbName:process.env.DATABASE_NAME});
+    cached.promise = mongoose.connect(MONGODB_URI, {
+      bufferCommands: false,
+      dbName: process.env.DATABASE_NAME,
+    });
   }
 
   try {
@@ -31,6 +33,6 @@ export const connectToDatabase = async () => {
     cached.promise = null;
     throw err;
   }
-
-  console.log(`Connected to Database ${process.env.NODE_ENV}`)
+  return cached.conn;
+  console.log(`Connected to Database ${process.env.NODE_ENV}`);
 };
