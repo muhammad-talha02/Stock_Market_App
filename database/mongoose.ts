@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 const MONGODB_URI = process.env.MONGODB_URI;
-console.log({ MONGODB_URI });
 
 declare global {
   var mongooseCache: {
