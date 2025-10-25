@@ -1,10 +1,10 @@
 "use client";
 
 import {
-    CommandDialog,
-    CommandEmpty,
-    CommandInput,
-    CommandList,
+  CommandDialog,
+  CommandEmpty,
+  CommandInput,
+  CommandList,
 } from "@/components/ui/command";
 import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
@@ -45,11 +45,11 @@ export function SearchCommandDialog({
     setStocks(initialStocks);
   };
 
-  const handleSearch = async () => {
-    if (!isSearchMode) return setStocks(initialStocks);
+  const handleSearch = async (value:string) => {
+    if (!value) return setStocks(initialStocks);
     setLoading(true);
     try {
-      const results = await searchStocks(searchItem.trim());
+      const results = await searchStocks(value.trim());
       setStocks(results);
     } catch {
       setStocks([]);
@@ -57,10 +57,10 @@ export function SearchCommandDialog({
       setLoading(false);
     }
   };
-  const debounceSearch = useDebounce(handleSearch, 300);
-  useEffect(() => {
-    debounceSearch();
-  }, [searchItem]);
+  const debounceSearch = useDebounce((value)=>{
+    handleSearch(value as string)
+  }, 300);
+
   return (
     <>
       {renderAs === "text" ? (
@@ -80,14 +80,17 @@ export function SearchCommandDialog({
         <div className="search-field">
           <CommandInput
             value={searchItem}
-            onValueChange={setSearchItem}
+            onValueChange={(value)=> {
+              setSearchItem(value)
+              debounceSearch(value)
+            }}
             className="search-input"
             placeholder="Type a command or search..."
           />
           {loading && <Loader2 className="search-loader" />}
         </div>
 
-        <CommandList className="search-list">
+        <CommandList className="search-list scrollbar-hide-default">
           {loading ? (
             <CommandEmpty>Loading....</CommandEmpty>
           ) : displayStock.length === 0 ? (
@@ -100,7 +103,7 @@ export function SearchCommandDialog({
                 {isSearchMode ? "Search Results" : "Popular Stocks"} (
                 {displayStock?.length || 0})
               </div>
-              {displayStock?.map((stock, idx) => (
+              {displayStock?.map((stock) => (
                 <li key={stock.symbol} className="search-item">
                   <Link
                     href={`stocks/${stock.symbol}`}
