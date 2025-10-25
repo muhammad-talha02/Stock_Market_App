@@ -89,6 +89,7 @@ declare global {
         description: string;
         displaySymbol?: string;
         type: string;
+        __exchange?:string
     };
     
     type FinnhubSearchResponse = {
