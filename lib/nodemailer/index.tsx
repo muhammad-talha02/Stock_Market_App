@@ -20,7 +20,7 @@ export const sendWelcomeEmail = async ({
   );
 
   const mailOptions = {
-    from: `"Stockverse"`,
+    from: `"Stockverse" <stockverse@gmail.com>`,
     to: email,
     subject: `Welcome to the Stockverse - your toolkit is ready!`,
     text: "Thanks for joining us",
@@ -39,10 +39,10 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-    from: `"Stockverse"`,
+    from: `"Stockverse" <stockverse@gmail.com>`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
-        text: `Today's market news summary from Signalist`,
+        text: `Today's market news summary from Stockverse`,
         html: htmlTemplate,
     };
 

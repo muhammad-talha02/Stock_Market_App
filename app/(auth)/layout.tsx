@@ -14,7 +14,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
         <Link href="/" className="auth-logo">
           <Image
             src={"/assets/images/logo.png"}
-            alt="Signalist"
+            alt="Stockverse"
             width={140}
             height={32}
             className="h-8 w-auto"

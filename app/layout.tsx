@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Signalist",
+  title: "StockVerse | An Investment Platform",
   description:
     "Track Real time stock prices, get personalized alerts and details company insights",
 };
