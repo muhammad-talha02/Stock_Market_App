@@ -13,7 +13,7 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
       <section className="auth-left-section scrollbar-hide-default">
         <Link href="/" className="auth-logo">
           <Image
-            src={"/assets/icons/logo.svg"}
+            src={"/assets/images/logo.png"}
             alt="Signalist"
             width={140}
             height={32}

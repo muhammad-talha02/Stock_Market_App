@@ -29,7 +29,7 @@ const handleSignOut = async ()=>{
           className="flex items-center gap-3 text-gray-400 hover:text-yellow-500"
         >
           <Avatar className="h-8 w-8">
-            <AvatarImage src="https://github.com/shadcn.pn" />
+            <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOjWhwGCPomxXhhku6-65psMBCBQr4P7Fakw&s" />
             <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
               {user?.name?.charAt(0)}
             </AvatarFallback>
@@ -41,7 +41,7 @@ const handleSignOut = async ()=>{
           </div>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="text-gray-400">
+      <DropdownMenuContent className="text-gray-400 bg-gray-800">
         <DropdownMenuLabel>
           <div className="flex realtive gap-3 items-center py-2">
             <Avatar className="h-10 w-10">
