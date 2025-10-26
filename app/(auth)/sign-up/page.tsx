@@ -26,10 +26,10 @@ const SignUp = () => {
       fullName: "",
       email: "",
       password: "",
-      country: "US",
+      // country: "US",
       //   investmentGoals: "Growth",
-      riskTolerance: "Medium",
-      preferredIndustry: "Technology",
+      // riskTolerance: "Medium",
+      // preferredIndustry: "Technology",
     },
     mode: "all",
   });
@@ -39,7 +39,7 @@ const SignUp = () => {
       const result = await signUpWithEmail(data);
       if (result.success) {
         router.push("/");
-        toast.success("User Created has been created");
+        toast.success("User accpunt has been created");
       }
     } catch (error) {
       console.error(error);
@@ -89,11 +89,11 @@ const SignUp = () => {
         <InputField
           name="password"
           label="Password"
-          placeholder=""
+          placeholder="Enter your password"
           register={register}
           error={errors?.password}
           type="password"
-          validation={{ required: "Password is required.", minLength: {value:8, message:"Minimum lnegth should be 8 characters"} }}
+          validation={{ required: "Password is required.", minLength: {value:8, message:"Minimum length should be 8 characters"} }}
         />
 
         <CountrySelectField
@@ -141,7 +141,7 @@ const SignUp = () => {
         </Button>
         <FooterLink
           text="Already have an account? "
-          linkText="Sign in"
+          linkText="Sign In"
           href="/sign-in"
         />
       </form>

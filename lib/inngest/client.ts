@@ -1,6 +1,6 @@
 import { Inngest } from "inngest";
 export const inngest = new Inngest({
-  id: "stock-tracker",
+  id: "stockverse",
   ai: {
     gemini: {
       apiKey: process.env.GEMINI_API_KEY,

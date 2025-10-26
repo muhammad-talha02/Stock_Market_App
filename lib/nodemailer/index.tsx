@@ -20,9 +20,9 @@ export const sendWelcomeEmail = async ({
   );
 
   const mailOptions = {
-    from: `"Stock Tracker" <welcome@mail.com>`,
+    from: `"Stockverse"`,
     to: email,
-    subject: `Welcome to the Stock Tracker - your toolkit is ready!`,
+    subject: `Welcome to the Stockverse - your toolkit is ready!`,
     text: "Thanks for joining us",
     html: htmlTemplate,
   };
@@ -39,7 +39,7 @@ export const sendNewsSummaryEmail = async (
         .replace('{{newsContent}}', newsContent);
 
     const mailOptions = {
-    from: `"Stock Tracker" <welcome@mail.com>`,
+    from: `"Stockverse"`,
         to: email,
         subject: `📈 Market News Summary Today - ${date}`,
         text: `Today's market news summary from Signalist`,

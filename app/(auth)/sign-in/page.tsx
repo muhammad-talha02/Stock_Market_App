@@ -14,20 +14,16 @@ const SignIn = () => {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<SignUpFormData>({
+  } = useForm<SignInFormData>({
     defaultValues: {
-      fullName: "",
       email: "",
       password: "",
-      country: "US",
-      //   investmentGoals: "Growth",
-      riskTolerance: "Medium",
-      preferredIndustry: "Technology",
+     
     },
     mode: "all",
   });
 
-  const onSubmit: SubmitHandler<SignUpFormData> = async (data) => {
+  const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
     try {
       const result = await signInWithEmail(data);
       console.log({result})
@@ -39,7 +35,7 @@ const SignIn = () => {
           description:
             result.error instanceof Error
               ?result.error.message
-              : "Failed to create and account",
+              : "Failed to sign in",
         });
 
       }
@@ -49,7 +45,7 @@ const SignIn = () => {
         description:
           error instanceof Error
             ? error.message
-            : "Failed to create and account",
+            : "Failed to sign in",
       });
     }
   };
@@ -77,7 +73,7 @@ const SignIn = () => {
         <InputField
           name="password"
           label="Password"
-          placeholder=""
+          placeholder="Enter your password"
           register={register}
           error={errors?.password}
           type="password"
@@ -85,7 +81,7 @@ const SignIn = () => {
             required: "Password is required.",
             minLength: {
               value: 8,
-              message: "Minimum lnegth should be 8 characters",
+              message: "Minimum length should be 8 characters",
             },
           }}
         />
@@ -95,11 +91,11 @@ const SignIn = () => {
           disabled={isSubmitting}
           className="yellow-btn w-full -mt-5"
         >
-          {isSubmitting ? "Logining..." : "Login"}
+          {isSubmitting ? "Signing...." : "Sign In"}
         </Button>
         <FooterLink
           text="Don't have an account? "
-          linkText="Sign up"
+          linkText="Create new account."
           href="/sign-up"
         />
       </form>

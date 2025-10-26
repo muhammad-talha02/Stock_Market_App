@@ -45,7 +45,7 @@ const handleSignOut = async ()=>{
         <DropdownMenuLabel>
           <div className="flex realtive gap-3 items-center py-2">
             <Avatar className="h-10 w-10">
-              <AvatarImage src="https://github.com/shadcn.png" />
+            <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOjWhwGCPomxXhhku6-65psMBCBQr4P7Fakw&s" />
               <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
                 {user?.name?.charAt(0)}
               </AvatarFallback>
