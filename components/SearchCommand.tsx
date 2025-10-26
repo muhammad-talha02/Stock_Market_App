@@ -106,7 +106,7 @@ export function SearchCommandDialog({
               {displayStock?.map((stock) => (
                 <li key={stock.symbol} className="search-item">
                   <Link
-                    href={`stocks/${stock.symbol}`}
+                    href={`/stocks/${stock.symbol}`}
                     onClick={handleStockSelected}
                     className="search-item-link"
                   >
