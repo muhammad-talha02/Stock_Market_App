@@ -6,7 +6,6 @@ import {
   CommandInput,
   CommandList,
 } from "@/components/ui/command";
-import { Button } from "./ui/button";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Loader2, Star, TrendingUp } from "lucide-react";
@@ -14,11 +13,10 @@ import { searchStocks } from "@/lib/actions/finnhub.actions";
 import { useDebounce } from "@/hooks/useDebounce";
 
 export function SearchCommandDialog({
-  renderAs = "button",
-  label,
   initialStocks,
+  open,
+  setOpen,
 }: SearchCommandProps) {
-  const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [searchItem, setSearchItem] = useState("");
   const [stocks, setStocks] =
@@ -37,7 +35,7 @@ export function SearchCommandDialog({
 
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
-  }, []);
+  }, [setOpen]);
 
   const handleStockSelected = () => {
     setOpen(false);
@@ -45,7 +43,7 @@ export function SearchCommandDialog({
     setStocks(initialStocks);
   };
 
-  const handleSearch = async (value:string) => {
+  const handleSearch = async (value: string) => {
     if (!value) return setStocks(initialStocks);
     setLoading(true);
     try {
@@ -57,21 +55,12 @@ export function SearchCommandDialog({
       setLoading(false);
     }
   };
-  const debounceSearch = useDebounce((value)=>{
-    handleSearch(value as string)
+  const debounceSearch = useDebounce((value) => {
+    handleSearch(value as string);
   }, 300);
 
   return (
     <>
-      {renderAs === "text" ? (
-        <span className="search-text" onClick={() => setOpen(true)}>
-          {label}
-        </span>
-      ) : (
-        <Button className="search-btn" onClick={() => setOpen(true)}>
-          {label}
-        </Button>
-      )}
       <CommandDialog
         open={open}
         onOpenChange={setOpen}
@@ -80,9 +69,9 @@ export function SearchCommandDialog({
         <div className="search-field">
           <CommandInput
             value={searchItem}
-            onValueChange={(value)=> {
-              setSearchItem(value)
-              debounceSearch(value)
+            onValueChange={(value) => {
+              setSearchItem(value);
+              debounceSearch(value);
             }}
             className="search-input"
             placeholder="Type a command or search..."
@@ -117,7 +106,7 @@ export function SearchCommandDialog({
                         {stock.symbol} | {stock.exchange} | {stock.type}
                       </div>
                     </div>
-                    <Star/>
+                    <Star />
                   </Link>
                 </li>
               ))}

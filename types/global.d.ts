@@ -1,3 +1,5 @@
+import { Dispatch } from "react";
+
 declare global {
     type SignInFormData = {
         email: string;
@@ -56,8 +58,8 @@ declare global {
     };
 
     type SearchCommandProps = {
-        renderAs?: 'button' | 'text';
-        label?: string;
+        setOpen:Dispatch<React.SetStateAction<boolean>>;
+        open:boolean;
         initialStocks: StockWithWatchlistStatus[];
     };
 

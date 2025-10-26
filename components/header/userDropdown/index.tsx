@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -10,19 +10,25 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { LogOut } from "lucide-react";
-import NavItems from "../navItems";
 import { signOut } from "@/lib/actions/auth.actions";
 import { useRouter } from "next/navigation";
-const UserDropdown = ({user,initialStocks}:{user:User,initialStocks:StockWithWatchlistStatus[]}) => {
-
-  const router = useRouter()
-const handleSignOut = async ()=>{
-  await signOut()
-  router.push('sign-in')
-}
+import { ReactNode, useState } from "react";
+const UserDropdown = ({
+  children,
+  user,
+}: {
+  children: ReactNode;
+  user: User;
+}) => {
+  const [open, setOpen] = useState(false);
+  const router = useRouter();
+  const handleSignOut = async () => {
+    await signOut();
+    router.push("sign-in");
+  };
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={open} onOpenChange={setOpen}>
       <DropdownMenuTrigger asChild>
         <Button
           variant="ghost"
@@ -45,7 +51,7 @@ const handleSignOut = async ()=>{
         <DropdownMenuLabel>
           <div className="flex realtive gap-3 items-center py-2">
             <Avatar className="h-10 w-10">
-            <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOjWhwGCPomxXhhku6-65psMBCBQr4P7Fakw&s" />
+              <AvatarImage src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQOjWhwGCPomxXhhku6-65psMBCBQr4P7Fakw&s" />
               <AvatarFallback className="bg-yellow-500 text-yellow-900 text-sm font-bold">
                 {user?.name?.charAt(0)}
               </AvatarFallback>
@@ -59,14 +65,17 @@ const handleSignOut = async ()=>{
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="bg-gray-600" />
-        <DropdownMenuItem onClick={handleSignOut} className="text-gray-100 text-md font-medium focus:bg-transparent focus:text-yellow-500 transition-colors cursor-pointer">
+        <DropdownMenuItem
+          onClick={handleSignOut}
+          className="text-gray-100 text-md font-medium focus:bg-transparent focus:text-yellow-500 transition-colors cursor-pointer"
+        >
           <LogOut className="h-4 w-4 mr-2 hidden sm:block" />
           Logout
         </DropdownMenuItem>
         <DropdownMenuSeparator className="bg-gray-600 block sm:hidden" />
-        <nav className="sm:hidden">
-          <NavItems initialStocks={initialStocks}/>
-        </nav>
+        <DropdownMenuItem onClick={() => setOpen(false)}>
+          {children}
+        </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
