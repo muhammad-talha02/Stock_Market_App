@@ -25,14 +25,12 @@ const RootLayout = async ({ children }: { children: ReactNode }) => {
       <section className="auth-right-section">
         <div className="z-10 relative lg:mt-4 lg:mb-16">
           <blockquote className="auth-blockquote">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque
-            minus, provident ducimus hic excepturi libero placeat aliquam sint
-            qui porro tempora? Aperiam asperiores quibusdam odio!
+            The market rewards those who stay patient and informed. Every price movement tells a story, and every trend hides an opportunity. Success belongs to those who learn, adapt, and trust the power of time.
           </blockquote>
           <div className="flex items-center justify-between">
             <div>
-              <cite className="auth-testimonial-author">- Marcus Aurelius</cite>
-              <p className="max-md:text-xs text-gray-500">Stoicism</p>
+              <cite className="auth-testimonial-author">- Warren Buffett</cite>
+              <p className="max-md:text-xs text-gray-500"> Investor & CEO of Berkshire Hathaway</p>
             </div>
             <div className="flex items-center gap-0.5">
               {[1, 2, 3, 4, 5].map((star) => (

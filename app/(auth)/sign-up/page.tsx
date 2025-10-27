@@ -53,7 +53,7 @@ const SignUp = () => {
   };
 
   return (
-    <>
+    <div>
       <h1 className="form-title">Sign Up</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <InputField
@@ -135,7 +135,7 @@ const SignUp = () => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="yellow-btn w-full -mt-5"
+          className="yellow-btn w-full mt-0"
         >
           {isSubmitting ? "Creating Account" : "Start Your Investment Journey"}
         </Button>
@@ -145,7 +145,7 @@ const SignUp = () => {
           href="/sign-in"
         />
       </form>
-    </>
+    </div>
   );
 };
 

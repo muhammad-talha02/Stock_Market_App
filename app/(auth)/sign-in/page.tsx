@@ -51,7 +51,7 @@ const SignIn = () => {
   };
 
   return (
-    <>
+    <div className="h-full flex flex-col justify-center">
       <h1 className="form-title">Login to your account</h1>
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <InputField
@@ -89,7 +89,7 @@ const SignIn = () => {
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="yellow-btn w-full -mt-5"
+          className="yellow-btn w-full mt-0"
         >
           {isSubmitting ? "Signing...." : "Sign In"}
         </Button>
@@ -99,7 +99,7 @@ const SignIn = () => {
           href="/sign-up"
         />
       </form>
-    </>
+    </div>
   );
 };
 
